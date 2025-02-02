@@ -11,15 +11,16 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/', include(router.urls)), #dashboard
     path('api/user/', account_views.user_info),
     path('api/signout/', account_views.signout_view, name='signout'),
     path('api/signin/', account_views.signin, name='signin'),
     path('api/signup/', account_views.signup, name='signup'),
-    path('api/check-auth/', account_views.check_auth, name='check_auth'),
-    path('api/install/version/', file_views.versions, name='install-file-versions'),
-    path('api/install/version/<version>/files/', file_views.version_files, name='install-files'),
-    path('api/<filetype>/files/', file_views.files, name='files'),
+    path('api/check-auth/', account_views.check_auth, name='check-auth'),
+
+    path('api/<filetype>/versions/<version>/', file_views.get_files_by_version, name='get-files-by-version'),
+    path('api/<filetype>/', file_views.get_version_and_file, name='get-version-and-file'),
+
     path('', views.index),
 ]
 
