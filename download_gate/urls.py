@@ -11,7 +11,8 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)), #dashboard
+    path("api/", include("management.urls")),
+
     path('api/user/', account_views.user_info),
     path('api/signout/', account_views.signout_view, name='signout'),
     path('api/signin/', account_views.signin, name='signin'),
