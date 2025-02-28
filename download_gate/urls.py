@@ -12,6 +12,8 @@ router = DefaultRouter()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include("management.urls")),
+    path('api/csrf/', account_views.get_csrf_token),
+    path('api/update/', account_views.update_user),
 
     path('api/user/', account_views.user_info),
     path('api/signout/', account_views.signout_view, name='signout'),
