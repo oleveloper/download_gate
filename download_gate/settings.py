@@ -139,26 +139,26 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
-        # 'rest_framework.permissions.IsAuthenticated',
     ),
 }
 
 #
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-]
-
-#
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_EXPOSE_HEADERS = [
+    'Set-Cookie',
+    'Authorization',
+]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 CORS_ALLOW_HEADERS = [
+    'Accept',
     'Content-Type',
     'Authorization',
     'X-CSRFToken',
@@ -171,9 +171,21 @@ CORS_ALLOW_METHODS = [
     'OPTIONS',
 ]
 
+#
+CSRF_COOKIE_DOMAIN = ""
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = None
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+]
+
+#
+SESSION_COOKIE_DOMAIN = ""
 SESSION_COOKIE_NAME = 'sessionid'
+SESSION_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SAMESITE = None
 SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_SAMESITE = 'Lax'
 
 LOGOUT_REDIRECT_URL = '/'
 
